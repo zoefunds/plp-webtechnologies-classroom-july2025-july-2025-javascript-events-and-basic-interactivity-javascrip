@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Web Demo - Advanced</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="#" class="logo">WebInteract</a>
+            <ul id="mainMenu" class="menu">
+                <li><a href="#counterSection">Counter</a></li>
+                <li><a href="#faqSection">FAQ</a></li>
+                <li class="dropdown" tabindex="0" aria-haspopup="true">
+                    <span>Components ▼</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="#tabSection">Tabs</a></li>
+                        <li><a href="#signupSection">Sign Up</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="modeToggle" class="mode-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Tabbed Interface Section -->
+        <section id="tabSection" class="interactive-section" aria-label="Tabbed Interface">
+            <h2>Tabbed Interface Example</h2>
+            <div class="tabs" role="tablist">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="tab1" id="tabBtn1">About</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="tab2" id="tabBtn2">Features</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="tab3" id="tabBtn3">Contact</button>
+            </div>
+            <div class="tab-content" id="tab1" role="tabpanel" aria-labelledby="tabBtn1">
+                <p>This interactive demo showcases advanced JavaScript-based UI components for a modern web experience. Explore the features below!</p>
+            </div>
+            <div class="tab-content hidden" id="tab2" role="tabpanel" aria-labelledby="tabBtn2">
+                <ul>
+                    <li>Light/Dark Mode with Persistence</li>
+                    <li>Animated Counter with Sound</li>
+                    <li>Accessible FAQ Accordion</li>
+                    <li>Dropdown and Tab Navigation</li>
+                    <li>Custom Form Validation & Feedback</li>
+                </ul>
+            </div>
+            <div class="tab-content hidden" id="tab3" role="tabpanel" aria-labelledby="tabBtn3">
+                <p>Questions? Email us at <a href="mailto:info@webinteract.com">info@webinteract.com</a>.</p>
+            </div>
+        </section>
+
+        <!-- Counter Game Section -->
+        <section id="counterSection" class="interactive-section" aria-label="Counter Game">
+            <h2>Animated Counter Game</h2>
+            <div class="counter-container">
+                <button id="decrementBtn" aria-label="Decrease counter">-</button>
+                <span id="counterValue" class="counter-value" aria-live="polite">0</span>
+                <button id="incrementBtn" aria-label="Increase counter">+</button>
+                <button id="resetBtn" aria-label="Reset counter" class="icon-btn" title="Reset counter">🔄</button>
+            </div>
+            <progress id="counterProgress" max="20" value="0" aria-label="Counter progress"></progress>
+            <p id="counterMessage" class="counter-message"></p>
+            <audio id="beepSound" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfa5d3b.mp3"></audio>
+        </section>
+
+        <!-- FAQ Accordion Section -->
+        <section id="faqSection" class="interactive-section" aria-label="FAQ">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq" id="faqAccordion">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="q1">
+                        What is this demo about?
+                    </button>
+                    <div class="faq-answer" id="faq1" role="region" aria-labelledby="q1">
+                        <p>This page demonstrates advanced JavaScript interactivity and UI patterns for modern web apps.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="q2">
+                        How is the form validated?
+                    </button>
+                    <div class="faq-answer" id="faq2" role="region" aria-labelledby="q2">
+                        <p>Form validation uses custom JavaScript for real-time checks, regex, and accessibility-friendly error feedback.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="q3">
+                        Is this design responsive?
+                    </button>
+                    <div class="faq-answer" id="faq3" role="region" aria-labelledby="q3">
+                        <p>Yes! The layout and components are fully responsive for desktop and mobile devices.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup Form Section -->
+        <section id="signupSection" class="interactive-section" aria-label="Sign Up Form">
+            <h2>Sign Up</h2>
+            <form id="signupForm" novalidate autocomplete="off">
+                <div class="form-group">
+                    <label for="name">Full Name <span aria-hidden="true">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true" autocomplete="off">
+                    <span class="error-message" id="nameError" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true" autocomplete="off">
+                    <span class="error-message" id="emailError" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password <span aria-hidden="true">*</span></label>
+                    <input type="password" id="password" name="password" required aria-required="true" autocomplete="new-password">
+                    <meter max="4" id="passwordStrength" value="0"></meter>
+                    <span class="strength-label" id="passwordStrengthLabel"></span>
+                    <span class="error-message" id="passwordError" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password <span aria-hidden="true">*</span></label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required aria-required="true" autocomplete="new-password">
+                    <span class="error-message" id="confirmPasswordError" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submitBtn">Sign Up</button>
+                </div>
+                <span class="success-message" id="formSuccess" aria-live="polite"></span>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 <strong>WebInteract</strong> | All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
